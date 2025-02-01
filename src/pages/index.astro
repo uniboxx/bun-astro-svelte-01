@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Counter from '../components/Counter.svelte';
+---
+
+<BaseLayout pageTitle="Homepage">
+  <h2>Sottotitolo</h2>
+  <Counter client:load />
+</BaseLayout>
+
+<style>
+  h2 {
+    color: navy;
+  }
+</style>

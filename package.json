@@ -1,0 +1,22 @@
+{
+  "name": "bun-astro-svelte-01",
+  "type": "module",
+  "version": "0.0.1",
+  "license": "ISC",
+  "author": "unibox <unibox@duck.com>",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/svelte": "^7.0.4",
+    "astro": "^5.2.1",
+    "svelte": "^5.19.5",
+    "typescript": "^5.7.3"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.1"
+  }
+}
