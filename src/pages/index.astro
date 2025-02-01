@@ -1,11 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Counter from '../components/Counter.svelte';
+import AstroHeart from '../components/AstroHeart.astro';
 ---
 
 <BaseLayout pageTitle="Homepage">
   <h2>Sottotitolo</h2>
   <Counter client:load />
+  <AstroHeart />
 </BaseLayout>
 
 <style>
