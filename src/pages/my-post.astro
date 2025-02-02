@@ -1,0 +1,33 @@
+---
+import { getCollection } from 'astro:content';
+import * as greatPost from '../blog/great-post.md';
+import BaseLayout from '../layouts/BaseLayout.astro';
+const posts = await getCollection('blog');
+const { title, author } = greatPost.frontmatter;
+---
+
+<BaseLayout pageTitle="my post astro">
+  <p>{title}</p>
+  <p>Written by: {author}</p>
+
+  <p>Post Archive:</p>
+  <ul>
+    {
+      posts.map((post: any) => (
+        <li>
+          <a class="post-title" href={post.url}>
+            {post.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</BaseLayout>
+
+<style>
+  .post-title {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+</style>
