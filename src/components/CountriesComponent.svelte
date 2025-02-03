@@ -3,6 +3,7 @@
   let rotated = $state(false);
   let order = $state('');
   let type = $state('');
+
   function orderBy(column: string) {
     if (order === column) {
       rotated = !rotated;
@@ -13,17 +14,19 @@
     order = column;
     type = type === 'asc' ? 'desc' : 'asc';
   }
+  const thStyles = 'px-4 py-2 border-2 border-solid border-gray-500';
+  const tdStyles = 'px-4 py-2 border-gray-400 border-solid border-1';
 </script>
 
 {#await fetchCountries(order, type)}
   <p>Loading countries...</p>
 {:then countries}
   <h1>Number of Countries: {countries.length}</h1>
-  <table>
+  <table class="border-2 border-collapse border-gray-500 border-solid">
     <thead>
       <tr>
-        <th>Index</th>
-        <th
+        <th class={thStyles}>Index</th>
+        <th class={thStyles}
           >Name <button
             class={{ rotated: rotated && order === 'name' }}
             id="population"
@@ -36,8 +39,8 @@
             {/if}
           </button></th
         >
-        <th>Capital</th>
-        <th
+        <th class={thStyles}>Capital</th>
+        <th class={thStyles}
           >Population <button
             class={{ rotated: rotated && order === 'population' }}
             id="population"
@@ -54,11 +57,11 @@
     </thead>
     <tbody>
       {#each countries as country, index (index)}
-        <tr>
-          <td>{(index + 1).toString().padStart(3, '0')}</td>
-          <td>{country.name.common}</td>
-          <td>{country.capital ? country.capital[0] : ''}</td>
-          <td>{country.population}</td>
+        <tr class="even:bg-gray-300">
+          <td class={tdStyles}>{(index + 1).toString().padStart(3, '0')}</td>
+          <td class={['max-w-60', tdStyles]}>{country.name.common}</td>
+          <td class={tdStyles}>{country.capital ? country.capital[0] : ''}</td>
+          <td class={tdStyles}>{country.population}</td>
         </tr>
       {/each}
     </tbody>
@@ -69,12 +72,6 @@
 
 <style>
   table {
-    border: 2px solid gray;
-    border-collapse: collapse;
-    th {
-      border: 2px solid gray;
-      padding: 5px 10px;
-    }
     #population {
       cursor: pointer;
       display: inline-block;
@@ -83,21 +80,6 @@
       &.rotated {
         transform-origin: center;
         transform: rotateX(180deg);
-      }
-    }
-  }
-  tbody {
-    tr {
-      &:nth-child(even) {
-        background-color: lightgray;
-      }
-      td {
-        border: 1px solid gray;
-        padding: 5px 10px;
-      }
-      td:nth-child(2) {
-        max-width: 15rem;
-        word-wrap: wrap;
       }
     }
   }
