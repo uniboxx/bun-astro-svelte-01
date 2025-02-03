@@ -18,7 +18,7 @@ const blog = defineCollection({
     tags: z.array(z.string()),
   }),
 });
-/*
+
 const countries = defineCollection({
   loader: async () => {
     const response = await fetch('https://restcountries.com/v3.1/all');
@@ -37,6 +37,6 @@ const countries = defineCollection({
     population: z.number(),
   }),
 });
-*/
+
 // Export a single `collections` object to register your collection(s)
-export const collections = { blog };
+export const collections = { blog, countries };

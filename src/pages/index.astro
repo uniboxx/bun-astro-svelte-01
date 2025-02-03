@@ -5,9 +5,10 @@ import AstroHeart from '../components/AstroHeart.astro';
 ---
 
 <BaseLayout pageTitle="Homepage">
-  <h2>Sottotitolo</h2>
-  <Counter client:load />
-  <AstroHeart />
+  <div class="m-auto mt-8 w-max">
+    <Counter client:load />
+    <AstroHeart />
+  </div>
 </BaseLayout>
 
 <style>

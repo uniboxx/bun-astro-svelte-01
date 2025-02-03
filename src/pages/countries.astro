@@ -1,8 +1,19 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
 import CountriesComponent from '@components/CountriesComponent.svelte';
+import { Image } from 'astro:assets';
+import paesaggio from '../assets/the-cleveland-museum-of-art-TZeq7yN3kOM-unsplash.jpg';
+import { getCollection } from 'astro:content';
+const countries = await getCollection('countries');
 ---
 
 <BaseLayout pageTitle="Countries">
-  <CountriesComponent client:load />
+  <Image
+    class="m-auto"
+    src={paesaggio}
+    alt="paesaggio"
+    width="400"
+    loading="eager"
+  />
+  <CountriesComponent countries={countries} client:load />
 </BaseLayout>
