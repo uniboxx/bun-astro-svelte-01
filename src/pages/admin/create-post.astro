@@ -1,0 +1,36 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const pathname = import.meta.env.BASE_URL;
+---
+
+<BaseLayout pageTitle="Create Post">
+  <form
+    method="POST"
+    action=`${pathname}/api/add-post`
+    class="grid m-auto max-w-90"
+  >
+    <label class="flex flex-col my-2" for="author"
+      >Autore <input
+        class="border-gray-300 border-1"
+        id="author"
+        name="author"
+      /></label
+    >
+
+    <label class="flex flex-col my-2" for="body"
+      >Contenuto <textarea
+        class="border-gray-300 border-1"
+        id="body"
+        name="body"
+        rows="10"></textarea></label
+    >
+
+    <button
+      class="px-4 py-2 mt-4 bg-blue-800 rounded cursor-pointer justify-self-end text-amber-50"
+      >Invia</button
+    >
+  </form>
+</BaseLayout>
+
+<!--renderizza `comments`-->

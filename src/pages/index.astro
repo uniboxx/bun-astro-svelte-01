@@ -2,6 +2,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Counter from '../components/Counter.svelte';
 import AstroHeart from '../components/AstroHeart.astro';
+import { turso } from '../turso';
+
+const { rows: posts } = await turso.execute('SELECT * FROM posts');
 ---
 
 <BaseLayout pageTitle="Homepage">
@@ -9,10 +12,16 @@ import AstroHeart from '../components/AstroHeart.astro';
     <Counter client:load />
     <AstroHeart />
   </div>
-</BaseLayout>
+  <div class="m-auto mt-4 max-w-max">
+    <h2 class="my-2 text-2xl text-blue-700">Posts from database</h2>
 
-<style>
-  h2 {
-    color: navy;
-  }
-</style>
+    {
+      posts.map(({ author, body }) => (
+        <article class="p-2 border-gray-300 border-1">
+          <p>Autore: {author}</p>
+          <p>{body}</p>
+        </article>
+      ))
+    }
+  </div>
+</BaseLayout>

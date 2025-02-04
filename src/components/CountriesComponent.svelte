@@ -17,9 +17,7 @@
   }
   const thStyles = 'px-4 py-2 border-2 border-solid border-gray-500';
   const tdStyles = 'px-4 py-2 border-gray-400 border-solid border-1';
-  const orderedCountries = $derived.by(() =>
-    orderCountries(countries, order, type)
-  );
+  const orderedCountries = $derived(orderCountries(countries, order, type));
 </script>
 
 <h1 class="pl-2 my-2 text-3xl text-center">

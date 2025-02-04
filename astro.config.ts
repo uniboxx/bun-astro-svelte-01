@@ -7,11 +7,13 @@ import svelte from '@astrojs/svelte';
 
 import tailwindcss from '@tailwindcss/vite';
 
+import db from '@astrojs/db';
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://uniboxx.github.io',
   base: `/${pkg.name}`,
-  integrations: [svelte()],
+  integrations: [svelte(), db()],
 
   vite: {
     plugins: [tailwindcss()],
