@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@astrojs/cloudflare": "^12.2.1",
+    "@astrojs/netlify": "^6.1.0",
     "@astrojs/svelte": "^7.0.4",
     "@astrojs/tailwind": "^6.0.0",
     "@libsql/client": "^0.14.0",
