@@ -1,15 +1,9 @@
 ---
 import BaseLayout from '@layouts/BaseLayout.astro';
-
-const pathname = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout pageTitle="Create Post">
-  <form
-    method="POST"
-    action=`${pathname}/api/add-post`
-    class="grid m-auto max-w-90"
-  >
+  <form method="POST" action=`/api/add-post` class="grid m-auto max-w-90">
     <label class="flex flex-col my-2" for="author"
       >Autore <input
         class="border-gray-300 border-1"

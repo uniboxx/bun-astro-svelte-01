@@ -1,6 +1,5 @@
 import type { APIRoute } from 'astro';
 import { turso } from '@turso';
-const pathname = import.meta.env.BASE_URL;
 
 export const POST: APIRoute = async ({ request, redirect }) => {
   const data = await request.formData();
@@ -12,7 +11,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       sql: `insert into posts (author, body) VALUES (?,?)`,
       args: [author, body],
     });
-    return redirect(`${pathname}/`, 301);
+    return redirect(`/`, 301);
   }
 
   return new Response(JSON.stringify({ message: 'Invalid input' }), {
