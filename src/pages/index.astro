@@ -6,6 +6,7 @@ import AstroHeart from '../components/AstroHeart.astro';
 import { turso } from '../turso';
 
 const { rows: posts } = await turso.execute('SELECT * FROM posts');
+console.log(posts[0]);
 ---
 
 <BaseLayout pageTitle="Homepage">
@@ -23,16 +24,15 @@ const { rows: posts } = await turso.execute('SELECT * FROM posts');
           <p>{body}</p>
           <p>
             Created at
-            {created_at
-              ? new Intl.DateTimeFormat('it-IT', {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                  hour: '2-digit',
-                  minute: '2-digit',
-                }).format(new Date(Date.parse(String(created_at))))
-              : 'N/A'}
+            {created_at &&
+              new Intl.DateTimeFormat('it-IT', {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+              }).format(new Date(created_at))}
           </p>
         </article>
       ))
